@@ -1,9 +1,11 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:first_flutter_proj/model/customIcons.dart';
 import 'package:first_flutter_proj/poc_materials/bottomNavBar_poc.dart';
 import 'package:first_flutter_proj/poc_materials/singleTon_poc.dart';
-import 'package:first_flutter_proj/sampleListPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 import '../constants/textConstants.dart';
 import '../constants/assetConstants.dart';
@@ -24,11 +26,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Bismi Cafe',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      // home: SplashScreen(
+      //   seconds: 5,
+      //   navigateAfterSeconds:MyHomePage(),
+      //   // title:  const Text(
+      //   //   'SplashScreen Example',
+      //   //   style:  TextStyle(
+      //   //       fontWeight: FontWeight.bold,
+      //   //       fontSize: 20.0,
+      //   //       color: Colors.white),
+      //   // ),
+      //   backgroundColor: Colors.lightBlue[200],
+      //   image: Image.asset("assets/Cafe Image_Jpg.jpg"),
+      //   photoSize: 250,
+      //   useLoader: false,
+      // ),
+      home:AnimatedSplashScreen(
+          duration: 3000,
+          splash: Icons.home,
+          splashIconSize: 100,
+          animationDuration: Duration(milliseconds: 2000),
+
+          nextScreen: MyHomePage(),
+          splashTransition: SplashTransition.rotationTransition,
+          //pageTransitionType: PageTransitionType.scale,
+          backgroundColor: Colors.blue)
     );
   }
 

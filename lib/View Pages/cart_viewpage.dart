@@ -25,6 +25,7 @@ class _cartViewPageState extends State<cartViewPage> {
       appBar: AppBar(
 
         leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {
+          Singleton.instance.SelectedIndexValues = [];
           Navigator.push(context, MaterialPageRoute(builder: (context) =>  MyHomePage()));
           },),
         title: Text(widget.title),
@@ -58,7 +59,7 @@ class _cartViewPageState extends State<cartViewPage> {
                              Singleton.instance.SelectedIndexValues.removeWhere((element) => element==currentItem);
                           Navigator.of(context).pop();
                            if(Singleton.instance.SelectedIndexValues.isEmpty){
-                             Navigator.push(context, MaterialPageRoute(builder: (context) =>  gridViewList(textConstants.BeveragesTitle,Singleton.instance.listapi)));
+                             Navigator.push(context, MaterialPageRoute(builder: (context) =>  MyHomePage()));
                            }});
                         }, child: const Text('Yes',style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,backgroundColor: Colors.redAccent,color: Colors.white54),)),
                         FlatButton(
@@ -103,12 +104,15 @@ class _cartViewPageState extends State<cartViewPage> {
                     color: Colors.blue,
                     onPressed: (){
                   setState(() {
-                    //Navigator.of(context).push(route);
+                    Singleton.instance.isOrderPlaced = true;
+                    Singleton.instance.SelectedIndexValues = [];
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>  MyHomePage()));
                   });
                 }, child: const Text('Yes',style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,backgroundColor: Colors.blue,color: Colors.white54),)),
                 FlatButton(
                     color: Colors.black,
                     onPressed: (){
+                      Singleton.instance.isOrderPlaced = false;
                   Navigator.of(context).pop();
                 }, child: const Text('No',style: TextStyle(fontWeight: FontWeight.bold,fontStyle: FontStyle.normal,backgroundColor: Colors.black,color: Colors.white54),))
               ],

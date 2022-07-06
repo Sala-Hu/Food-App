@@ -25,6 +25,7 @@ class Singleton {
   static Singleton get instance => _instance;
   List<listmodel> listapi = [];
   List<listmodel> SelectedIndexValues = [];
+  bool isOrderPlaced = false;
   int selectedIndex = 0;
   void someMethod(){
 

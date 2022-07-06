@@ -37,23 +37,7 @@ class _gridViewListState extends State<gridViewList> {
    @override
   Widget build(BuildContext context) {
      widget.listModel.removeWhere((element) => element.Name=="Ginger Lemon Ice Tea");
-    return
-      // appBar: AppBar(
-      //     automaticallyImplyLeading: false,
-      //   title: Text(widget.title,style: TextStyle(fontWeight: FontWeight.bold,color: Colors.tealAccent),),
-      //     actions: [
-      //       InkWell(
-      //           onTap: (){
-      //             if(widget.SelectedIndexValues.isNotEmpty) {
-      //               Navigator.push(context, MaterialPageRoute(builder: (context) =>  cartViewPage(textConstants.CartTitle,widget.SelectedIndexValues,widget.listModel)));
-      //             } else{
-      //             null;
-      //             }
-      //             },
-      //           child: SvgPicture.asset(assetConstants.AddToCartIcon,height: 40,width: 40,color: Colors.yellow,))]
-      // ),
-      //body:
-      Container(
+    return Container(
           color: Colors.white54,
           child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -63,6 +47,9 @@ class _gridViewListState extends State<gridViewList> {
                 itemCount: widget.listModel.length,
                 itemBuilder: ( context,  index) {
                   listmodel cafeDetail = widget.listModel[index];
+                  // if(Singleton.instance.isOrderPlaced){
+                  //   return AlertDialog();
+                  // }
                   return GridTile(
                     child: InkWell(
                       onTap: () { setState(() {
@@ -122,36 +109,5 @@ class _gridViewListState extends State<gridViewList> {
                 }
               )
             );
-        // bottomNavigationBar: BottomNavigationBar(
-        //   items: const <BottomNavigationBarItem>[
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.home),
-        //       label: 'Home',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.emoji_food_beverage),
-        //       label: 'Available Beverages',
-        //     ),
-        //   ],
-        //   currentIndex: _selectedIndex,
-        //   selectedItemColor: Colors.amber[800],
-        //   onTap: _onItemTapped,
-        // )
-
-
-          }
-
-           colorChange(){
-              cardColor = Colors.black87;
-          }
+   }
 }
-
-//
-// child: ClipRRect(
-// borderRadius: BorderRadius.circular(4.0),
-// child:  decoration: const BoxDecoration(
-//                                       borderRadius: BorderRadius.only(
-//                                           topRight: Radius.circular(40.0),
-//                                           bottomRight: Radius.circular(40.0),
-//                                       topLeft: Radius.circular(40.0),
-//                                       bottomLeft: Radius.circular(40.0))),
