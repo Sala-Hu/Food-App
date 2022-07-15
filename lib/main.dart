@@ -320,9 +320,7 @@ class IconFont extends StatelessWidget {
           future: apiListCall(),
           builder: (BuildContext context, AsyncSnapshot<List<listmodel>> snapshot) {
             if(snapshot.hasData){
-              return Container(
-                  child:gridViewList(title,Singleton.instance.listapi)
-              );
+              return gridViewList(title,Singleton.instance.listapi);
             }
             return Center(child: CircularProgressIndicator());
           },

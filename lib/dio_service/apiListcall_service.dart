@@ -4,7 +4,7 @@ import 'listmodel.dart';
 
 import '../constants/urlConstants.dart';
 import 'package:http/http.dart' as http;
-Future<List<listmodel>> getList() async {
+  Future<List<listmodel>> getList() async {
 //void getList() async {
   //Map<String, dynamic> response=<String, dynamic>{};
   var url = Uri.parse(urlConstants.listApi);
